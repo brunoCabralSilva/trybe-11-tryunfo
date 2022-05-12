@@ -7,23 +7,40 @@ class Card extends React.Component {
     const { cardName, cardDescription, cardAttr1 } = this.props;
     const { cardAttr2, cardAttr3, cardImage } = this.props;
     const { cardRare, cardTrunfo } = this.props;
-
     let valor = '';
-    if (cardTrunfo === true)valor = <p data-testid="trunfo-card">Super Trunfo</p>;
+    if (cardTrunfo === true)valor = <h4 data-testid="trunfo-card">Super Trunfo</h4>;
     return (
       <div>
-        <p data-testid="name-card">{cardName}</p>
+        <h4 data-testid="name-card">
+          Nome:
+          {cardName}
+        </h4>
         <img
           data-testid="image-card"
           src={ cardImage }
-          width="100px"
+          width="80%"
           alt="Nome da carta"
         />
-        <p data-testid="description-card">{cardDescription}</p>
-        <p data-testid="attr1-card">{cardAttr1}</p>
-        <p data-testid="attr2-card">{cardAttr2}</p>
-        <p data-testid="attr3-card">{cardAttr3}</p>
-        <p data-testid="rare-card">{cardRare}</p>
+        <h4 data-testid="description-card">
+          Descrição:
+          {cardDescription}
+        </h4>
+        <h4 data-testid="attr1-card">
+          Attr01:
+          {cardAttr1}
+        </h4>
+        <h4 data-testid="attr2-card">
+          Attr02:
+          {cardAttr2}
+        </h4>
+        <h4 data-testid="attr3-card">
+          Attr03:
+          {cardAttr3}
+        </h4>
+        <h4 data-testid="rare-card">
+          Raridade:
+          {cardRare}
+        </h4>
         {valor}
       </div>
     );
