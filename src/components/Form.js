@@ -16,6 +16,7 @@ class Form extends React.Component {
             <h3>Insira um nome para a carta: </h3>
             <input
               id="name"
+              name="cardName"
               type="text"
               value={ cardName }
               onChange={ onInputChange }
