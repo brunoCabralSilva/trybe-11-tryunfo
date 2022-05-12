@@ -1,5 +1,5 @@
 import React from 'react';
-import Forms from './components/Forms';
+import Form from './components/Form';
 import Card from './components/Card';
 
 class App extends React.Component {
@@ -42,7 +42,7 @@ class App extends React.Component {
         <h1>Tryunfo</h1>
         <div className="form-card">
           <div className="form-conteiner-Component">
-            <Forms isSaveButtonDisabled={ isvBtn } onInputChange={ this.onInputChange } />
+            <Form isSaveButtonDisabled={ isvBtn } onInputChange={ this.onInputChange } />
           </div>
           <div className="card-conteiner-Component">
             <Card
