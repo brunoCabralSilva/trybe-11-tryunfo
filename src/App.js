@@ -24,33 +24,34 @@ class App extends React.Component {
 
   render() {
     console.log(this.state);
-    const { cardName: cdGame, cardDescription: cdDescrip } = this.state;
-    const { cardAttr1, cardAttr2, cardRare } = this.state;
-    const { cardAttr3, cardImage: cdImg, cardTrunfo } = this.state;
-    const { hasTrunfo, isSaveButtonDisabled: iSaveBtn } = this.state;
+    const { cardName, cardDescription, cardAttr1, cardAttr2, cardRare } = this.state;
+    const { cardAttr3, cardImage, cardTrunfo } = this.state;
+    const { hasTrunfo, isSaveButtonDisabled: isvBtn } = this.state;
     console.log(hasTrunfo);
 
-    if (cdGame === '' || cdDescrip === '' || cdImg === '' || cardRare === '') {
-      this.setState({ iSaveBtn: true });
-    } else {
-      this.setState({ iSaveBtn: false });
-    }
+    // if (cardName === '' || cardDescription === '') {
+    //   if(cardImage === '' || cardRare === '') {
+    //     this.setState({ isSaveButtonDisabled: true });
+    //   } else {
+    //     this.setState({ isSaveButtonDisabled: false });
+    //   }
+    // }
 
     return (
       <div className="principal">
         <h1>Tryunfo</h1>
         <div className="form-card">
           <div className="form-conteiner-Component">
-            <Forms isSaveButton={ iSaveBtn } onInputChange={ this.onInputChange } />
+            <Forms isSaveButtonDisabled={ isvBtn } onInputChange={ this.onInputChange } />
           </div>
           <div className="card-conteiner-Component">
             <Card
-              cardName={ cdGame }
-              cardDescription={ cdDescrip }
+              cardName={ cardName }
+              cardDescription={ cardDescription }
               cardAttr1={ cardAttr1 }
               cardAttr2={ cardAttr2 }
               cardAttr3={ cardAttr3 }
-              cardImage={ cdImg }
+              cardImage={ cardImage }
               cardRare={ cardRare }
               cardTrunfo={ cardTrunfo }
             />
