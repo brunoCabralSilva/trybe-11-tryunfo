@@ -36,50 +36,52 @@ class Form extends React.Component {
             />
           </div>
         </label>
-        <label htmlFor="firstStatus">
-          <div>
-            <h3>Attr01 </h3>
-            <input
-              id="firstStatus"
-              name="cardAttr1"
-              value={ cardAttr1 }
-              onChange={ onInputChange }
-              type="number"
-              data-testid="attr1-input"
-            />
-          </div>
-        </label>
-        <label htmlFor="secondStatus">
-          <div>
-            <h3>Attr02 </h3>
-            <input
-              name="cardAttr2"
-              id="secondStatus"
-              value={ cardAttr2 }
-              onChange={ onInputChange }
-              type="number"
-              data-testid="attr2-input"
-            />
-          </div>
-        </label>
-        <label htmlFor="thirdStatus">
-          <div>
-            <h3>Attr03 </h3>
-            <input
-              id="thirdStatus"
-              name="cardAttr3"
-              value={ cardAttr3 }
-              onChange={ onInputChange }
-              type="number"
-              data-testid="attr3-input"
-            />
-          </div>
-        </label>
+        <div className="attr">
+          <label htmlFor="firstStatus">
+            <div>
+              <h3>Attr01 </h3>
+              <input
+                className="firstStatus"
+                name="cardAttr1"
+                value={ cardAttr1 }
+                onChange={ onInputChange }
+                type="number"
+                data-testid="attr1-input"
+              />
+            </div>
+          </label>
+          <label htmlFor="secondStatus">
+            <div>
+              <h3>Attr02 </h3>
+              <input
+                name="cardAttr2"
+                className="secondStatus"
+                value={ cardAttr2 }
+                onChange={ onInputChange }
+                type="number"
+                data-testid="attr2-input"
+              />
+            </div>
+          </label>
+          <label htmlFor="thirdStatus">
+            <div>
+              <h3>Attr03 </h3>
+              <input
+                className="thirdStatus"
+                name="cardAttr3"
+                value={ cardAttr3 }
+                onChange={ onInputChange }
+                type="number"
+                data-testid="attr3-input"
+              />
+            </div>
+          </label>
+        </div>
         <label htmlFor="linkImage">
           <div>
             <h3>Imagem:</h3>
             <input
-              id="linkImage"
+              className="linkImage"
               name="cardImage"
               type="text"
               value={ cardImage }
@@ -133,9 +135,9 @@ class Form extends React.Component {
 Form.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
-  cardAttr1: PropTypes.string.isRequired,
-  cardAttr2: PropTypes.string.isRequired,
-  cardAttr3: PropTypes.string.isRequired,
+  cardAttr1: PropTypes.number.isRequired,
+  cardAttr2: PropTypes.number.isRequired,
+  cardAttr3: PropTypes.number.isRequired,
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,

@@ -6,14 +6,13 @@ class App extends React.Component {
   state = {
     cardName: '',
     cardDescription: '',
-    cardAttr1: '',
-    cardAttr2: '',
-    cardAttr3: '',
+    cardAttr1: 0,
+    cardAttr2: 0,
+    cardAttr3: 0,
     cardImage: '',
     cardRare: '',
     cardTrunfo: false,
     hasTrunfo: false,
-    isSaveButtonDisabled: false,
   }
 
   onInputChange = ({ target }) => {
@@ -23,31 +22,57 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state);
-    const { cardName, cardDescription, cardAttr1, cardAttr2, cardRare } = this.state;
-    const { cardAttr3, cardImage, cardTrunfo } = this.state;
-    const { hasTrunfo, isSaveButtonDisabled: isvBtn } = this.state;
-    console.log(hasTrunfo);
+    const {
+      cardName,
+      cardDescription: cardDescrip,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardRare,
+      cardImage,
+      cardTrunfo,
+      hasTrunfo,
+      // isSaveButtonDisabled: isvBtn,
+    } = this.state;
+    const habilitaBotao = () => {
+      if (cardName !== '' && cardDescrip !== '' && cardImage !== '' && cardRare !== '') {
+        const attr1 = parseInt(cardAttr1, 10);
+        const attr2 = parseInt(cardAttr2, 10);
+        const attr3 = parseInt(cardAttr3, 10);
+        const max = 90;
+        const min = 0;
+        const vAtt1 = ((attr1 <= max) && (attr1 >= min));
+        const vAtt2 = ((attr2 <= max) && (attr2 >= min));
+        const vAtt3 = ((attr3 <= max) && (attr3 >= min));
+        console.log(vAtt1 && vAtt2 && vAtt3);
+        if (vAtt1 && vAtt2 && vAtt3) {
+          const valor = 210;
+          if ((attr1 + attr2 + attr3) <= valor) {
+            return false;
+          }
+          return true;
+        }
+        return true;
+      }
+      return true;
+    };
 
-    // if (cardName === '' || cardDescription === '') {
-    //   if(cardImage === '' || cardRare === '') {
-    //     this.setState({ isSaveButtonDisabled: true });
-    //   } else {
-    //     this.setState({ isSaveButtonDisabled: false });
-    //   }
-    // }
+    console.log(hasTrunfo);
 
     return (
       <div className="principal">
         <h1>Tryunfo</h1>
         <div className="form-card">
           <div className="form-conteiner-Component">
-            <Form isSaveButtonDisabled={ isvBtn } onInputChange={ this.onInputChange } />
+            <Form
+              isSaveButtonDisabled={ habilitaBotao() }
+              onInputChange={ this.onInputChange }
+            />
           </div>
           <div className="card-conteiner-Component">
             <Card
               cardName={ cardName }
-              cardDescription={ cardDescription }
+              cardDescription={ cardDescrip }
               cardAttr1={ cardAttr1 }
               cardAttr2={ cardAttr2 }
               cardAttr3={ cardAttr3 }
