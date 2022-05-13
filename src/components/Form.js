@@ -4,10 +4,20 @@ import PropTypes from 'prop-types';
 
 class Form extends React.Component {
   render() {
-    const { cardName, cardDescription, cardAttr1 } = this.props;
-    const { cardAttr2, cardAttr3, cardImage } = this.props;
-    const { cardRare, cardTrunfo, hasTrunfo } = this.props;
-    const { isSaveButtonDisabled, onInputChange, onSaveButtonClick } = this.props;
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+      isSaveButtonDisabled,
+      onInputChange,
+      onSaveButtonClick,
+    } = this.props;
     console.log(hasTrunfo);
     return (
       <div className="form">
