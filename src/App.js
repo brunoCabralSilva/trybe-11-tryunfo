@@ -13,6 +13,7 @@ class App extends React.Component {
     cardRare: '',
     cardTrunfo: false,
     hasTrunfo: false,
+    cards: [],
   }
 
   onInputChange = ({ target }) => {
@@ -54,6 +55,36 @@ class App extends React.Component {
   };
 
   onSaveButtonClick = () => {
+    const {
+      cardName,
+      cardDescription: cardDescrip,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardRare,
+      cardImage,
+      cardTrunfo,
+    } = this.state;
+
+    const newCard = {
+      nome: cardName,
+      descricao: cardDescrip,
+      atributo1: cardAttr1,
+      atributo2: cardAttr2,
+      atributo3: cardAttr3,
+      raridade: cardRare,
+      imagem: cardImage,
+      trunfo: cardTrunfo,
+    };
+
+    if (cardTrunfo === true) {
+      this.setState({ hasTrunfo: true });
+    }
+
+    this.setState((anterior) => ({
+      cards: [...anterior.cards, newCard],
+    }));
+
     this.setState(
       {
         cardName: '',
@@ -63,6 +94,7 @@ class App extends React.Component {
         cardAttr2: 0,
         cardAttr3: 0,
         cardRare: 'normal',
+        cardTrunfo: false,
       },
     );
   }
@@ -98,6 +130,8 @@ class App extends React.Component {
               onSaveButtonClick={ this.onSaveButtonClick }
               isSaveButtonDisabled={ this.habilitaBotao() }
               onInputChange={ this.onInputChange }
+              hasTrunfo={ hasTrunfo }
+              cardTrunfo={ cardTrunfo }
             />
           </div>
           <div className="card-conteiner-Component">

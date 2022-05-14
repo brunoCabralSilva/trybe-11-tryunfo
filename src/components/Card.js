@@ -9,6 +9,9 @@ class Card extends React.Component {
     const { cardRare, cardTrunfo } = this.props;
     let valor = '';
     if (cardTrunfo === true)valor = <h4 data-testid="trunfo-card">Super Trunfo</h4>;
+    else {
+      valor = <h4>Não é um Super Trunfo</h4>;
+    }
     return (
       <div>
         <h4 data-testid="name-card">
