@@ -98,6 +98,10 @@ input {
   width: 50%;
 }
 
+.div-exibicao {
+  display: flex;
+}
+
 .linkImage {
   width: 80%;
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import Lista from './components/Lista';
 
 class App extends React.Component {
   state = {
@@ -14,6 +15,8 @@ class App extends React.Component {
     cardTrunfo: false,
     hasTrunfo: false,
     cards: [],
+    filtro: 'todas',
+    filtroNome: '',
   }
 
   onInputChange = ({ target }) => {
@@ -54,6 +57,14 @@ class App extends React.Component {
     return true;
   };
 
+  filtraPorRaridade = (event) => {
+    this.setState({ filtro: event.target.value });
+  }
+
+  alteraFiltroNome = (event) => {
+    this.setState({ filtroNome: event.target.value });
+  }
+
   apagaCarta = (event) => {
     const { cards } = this.state;
     const cartaEscolhida = cards.find((carta) => carta.nome === event.target.id);
@@ -66,7 +77,6 @@ class App extends React.Component {
         novoArray.push(carta);
       }
     });
-    console.log(novoArray);
     this.setState({ cards: novoArray });
   }
 
@@ -115,6 +125,21 @@ class App extends React.Component {
     );
   }
 
+  opcaoArray = () => {
+    const { filtro, cards, filtroNome: fNm } = this.state;
+    let listaEscolhida = cards;
+    if (fNm === '' && filtro === 'todas') {
+      listaEscolhida = cards;
+    } else if (fNm === '' && filtro !== 'todas') {
+      listaEscolhida = cards.filter((carta) => carta.raridade === filtro);
+    } else if (fNm !== '' && filtro === 'todas') {
+      listaEscolhida = cards.filter((carta) => carta.nome.includes(fNm));
+    } else if (fNm !== '' && filtro !== 'todas') {
+      listaEscolhida = cards.filter((c) => c.raridade === filtro && c.nome.includes(fNm));
+    }
+    return listaEscolhida;
+  }
+
   render() {
     const {
       cardName,
@@ -126,54 +151,9 @@ class App extends React.Component {
       cardImage,
       cardTrunfo,
       hasTrunfo,
-      cards,
+      filtro,
     } = this.state;
-
-    const valor = cards.map((card) => {
-      let valorTrunfo = '';
-      if (card.trunfo === true) valorTrunfo = 'Trunfo';
-      const valor2 = (
-        <div className="div-cards">
-          <h4>
-            { card.nome }
-          </h4>
-          <h4>
-            Descrição:
-            { card.descricao }
-          </h4>
-          <h4>
-            Atributo1:
-            { card.atributo1 }
-          </h4>
-          <h4>
-            Atributo2:
-            { card.atributo2 }
-          </h4>
-          <h4>
-            Atributo3:
-            { card.atributo3 }
-          </h4>
-          <h4>
-            Raridade:
-            { card.raridade }
-          </h4>
-          <h4>
-            { valorTrunfo }
-          </h4>
-          <img src={ card.imagem } alt={ card.nome } />
-          <button
-            id={ card.nome }
-            type="button"
-            onClick={ this.apagaCarta }
-            data-testid="delete-button"
-          >
-            Excluir
-          </button>
-        </div>
-      );
-      return valor2;
-    });
-
+    const lista = this.opcaoArray();
     return (
       <div className="principal">
         <h1>Tryunfo</h1>
@@ -207,8 +187,33 @@ class App extends React.Component {
             />
           </div>
         </div>
-        <div className="todas-as-cartas">
-          { valor }
+        <div className="div-exibicao">
+          <div className="todos-os-filtros">
+            <input
+              type="text"
+              placeholder="Nome"
+              data-testid="name-filter"
+              onChange={ this.alteraFiltroNome }
+            />
+            <select
+              onChange={ this.filtraPorRaridade }
+              value={ filtro }
+              data-testid="rare-filter"
+              className="filtro-cartas"
+            >
+              <option value="todas" selected>todas</option>
+              <option value="normal">normal</option>
+              <option value="raro">raro</option>
+              <option value="muito raro">muito raro</option>
+            </select>
+          </div>
+          <div className="todas-as-cartas">
+            <Lista
+              listaEscolhida={ lista }
+              filtro={ filtro }
+              apagaCarta={ this.apagaCarta }
+            />
+          </div>
         </div>
       </div>
     );
