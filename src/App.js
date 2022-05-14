@@ -54,6 +54,22 @@ class App extends React.Component {
     return true;
   };
 
+  apagaCarta = (event) => {
+    const { cards } = this.state;
+    const cartaEscolhida = cards.find((carta) => carta.nome === event.target.id);
+    if (cartaEscolhida.trunfo === true) {
+      this.setState({ hasTrunfo: false });
+    }
+    const novoArray = [];
+    cards.forEach((carta) => {
+      if (carta !== cartaEscolhida) {
+        novoArray.push(carta);
+      }
+    });
+    console.log(novoArray);
+    this.setState({ cards: novoArray });
+  }
+
   onSaveButtonClick = () => {
     const {
       cardName,
@@ -119,33 +135,40 @@ class App extends React.Component {
       const valor2 = (
         <div className="div-cards">
           <h4>
-            Nome:
-            {` ${card.nome}` }
+            { card.nome }
           </h4>
           <h4>
             Descrição:
-            {` ${card.descricao}` }
+            { card.descricao }
           </h4>
           <h4>
             Atributo1:
-            {` ${card.atributo1}` }
+            { card.atributo1 }
           </h4>
           <h4>
             Atributo2:
-            {` ${card.atributo2}` }
+            { card.atributo2 }
           </h4>
           <h4>
             Atributo3:
-            {` ${card.atributo3}` }
+            { card.atributo3 }
           </h4>
           <h4>
             Raridade:
-            {` ${card.raridade}` }
+            { card.raridade }
           </h4>
           <h4>
             { valorTrunfo }
           </h4>
           <img src={ card.imagem } alt={ card.nome } />
+          <button
+            id={ card.nome }
+            type="button"
+            onClick={ this.apagaCarta }
+            data-testid="delete-button"
+          >
+            Excluir
+          </button>
         </div>
       );
       return valor2;
