@@ -17,6 +17,7 @@ class App extends React.Component {
     cards: [],
     filtro: 'todas',
     filtroNome: '',
+    filtroCheck: false,
   }
 
   onInputChange = ({ target }) => {
@@ -63,6 +64,15 @@ class App extends React.Component {
 
   alteraFiltroNome = (event) => {
     this.setState({ filtroNome: event.target.value });
+  }
+
+  alteraFiltroCheck = () => {
+    const { filtroCheck } = this.state;
+    if (filtroCheck === false) {
+      this.setState({ filtroCheck: true });
+    } else {
+      this.setState({ filtroCheck: false });
+    }
   }
 
   apagaCarta = (event) => {
@@ -126,18 +136,22 @@ class App extends React.Component {
   }
 
   opcaoArray = () => {
-    const { filtro, cards, filtroNome: fNm } = this.state;
-    let listaEscolhida = cards;
-    if (fNm === '' && filtro === 'todas') {
-      listaEscolhida = cards;
-    } else if (fNm === '' && filtro !== 'todas') {
-      listaEscolhida = cards.filter((carta) => carta.raridade === filtro);
-    } else if (fNm !== '' && filtro === 'todas') {
-      listaEscolhida = cards.filter((carta) => carta.nome.includes(fNm));
-    } else if (fNm !== '' && filtro !== 'todas') {
-      listaEscolhida = cards.filter((c) => c.raridade === filtro && c.nome.includes(fNm));
+    const { filtro, cards, filtroNome: fNm, filtroCheck } = this.state;
+    let lista = cards;
+    if (filtroCheck === false) {
+      if (fNm === '' && filtro === 'todas') {
+        lista = cards;
+      } else if (fNm === '' && filtro !== 'todas') {
+        lista = cards.filter((carta) => carta.raridade === filtro);
+      } else if (fNm !== '' && filtro === 'todas') {
+        lista = cards.filter((carta) => carta.nome.includes(fNm));
+      } else if (fNm !== '' && filtro !== 'todas') {
+        lista = cards.filter((c) => c.raridade === filtro && c.nome.includes(fNm));
+      }
+    } else {
+      lista = cards.filter((card) => card.trunfo === true);
     }
-    return listaEscolhida;
+    return lista;
   }
 
   render() {
@@ -152,6 +166,7 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       filtro,
+      filtroCheck,
     } = this.state;
     const lista = this.opcaoArray();
     return (
@@ -194,10 +209,12 @@ class App extends React.Component {
               placeholder="Nome"
               data-testid="name-filter"
               onChange={ this.alteraFiltroNome }
+              disabled={ filtroCheck }
             />
             <select
               onChange={ this.filtraPorRaridade }
               value={ filtro }
+              disabled={ filtroCheck }
               data-testid="rare-filter"
               className="filtro-cartas"
             >
@@ -206,6 +223,13 @@ class App extends React.Component {
               <option value="raro">raro</option>
               <option value="muito raro">muito raro</option>
             </select>
+            <input
+              type="checkbox"
+              data-testid="trunfo-filter"
+              checked={ filtroCheck }
+              onChange={ this.alteraFiltroCheck }
+            />
+            <span> Super Trunfo </span>
           </div>
           <div className="todas-as-cartas">
             <Lista
