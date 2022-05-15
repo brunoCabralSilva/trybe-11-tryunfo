@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Card from './Card';
 
 class Lista extends React.Component {
   render() {
@@ -9,38 +10,18 @@ class Lista extends React.Component {
       valor = 'Não há nenhuma carta criada';
     } else {
       valor = listaEscolhida.map((card) => {
-        let valorTrunfo = '';
-        if (card.trunfo === true) valorTrunfo = 'Trunfo';
         const valor2 = (
           <div className="div-cards">
-            <h4>
-              <strong>{ card.nome }</strong>
-            </h4>
-            <img src={ card.imagem } alt={ card.nome } className="img-card" />
-            <h6 className="info-Name descrip">
-              <strong>
-                { valorTrunfo }
-              </strong>
-              {' / '}
-              { card.raridade }
-              {' - '}
-              { card.descricao }
-            </h6>
-            <h6 className="info-Name descrip">
-              <strong>
-                Atk
-                {' - '}
-                { card.atributo1 }
-                {' / '}
-                Def
-                {' - '}
-                { card.atributo2 }
-                {' / '}
-                HP
-                {' - '}
-                { card.atributo3 }
-              </strong>
-            </h6>
+            <Card
+              cardTrunfo={ card.trunfo }
+              cardName={ card.nome }
+              cardDescription={ card.descricao }
+              cardAttr1={ card.atributo1 }
+              cardAttr2={ card.atributo2 }
+              cardAttr3={ card.atributo3 }
+              cardImage={ card.imagem }
+              cardRare={ card.raridade }
+            />
             <button
               className="btn-delete"
               id={ card.nome }

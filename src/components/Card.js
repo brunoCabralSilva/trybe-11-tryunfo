@@ -4,11 +4,13 @@ import PropTypes from 'prop-types';
 
 class Card extends React.Component {
   retornaSuperTrunfo = () => {
-    const { cardTrunfo } = this.props;
+    const { cardTrunfo, cardDescription } = this.props;
     if (cardTrunfo === true) {
       return (<span data-testid="trunfo-card">Super Trunfo  / </span>);
     }
-    return ('Nível de raridade: ');
+    if (cardDescription !== '') {
+      return ('Nível de raridade: ');
+    }
   };
 
   render() {
@@ -24,7 +26,7 @@ class Card extends React.Component {
 
     return (
       <div className="div-pai-div-Card">
-        <div className="div-Card destaque">
+        <div className="div-Card card-name">
           <h4 data-testid="name-card">
             <strong>
               { cardName }
@@ -46,35 +48,23 @@ class Card extends React.Component {
               { cardRare }
               {' - '}
             </span>
-            <span data-testid="description-card">
-              { cardDescription }
-            </span>
           </strong>
+          <span data-testid="description-card">
+            { cardDescription }
+          </span>
         </div>
         <div className="attr">
-          <div className="div-Card destaque">
-            <h4 data-testid="attr1-card">
-              <strong>
-                Atk:
-                {` ${cardAttr1}` }
-              </strong>
-            </h4>
+          <div className="div-Card cadaAttr" data-testid="attr1-card">
+            <div className="attr-title"><strong>Ataque</strong></div>
+            <div className="attr-descrip">{ cardAttr1 }</div>
           </div>
-          <div className="div-Card destaque">
-            <h4 data-testid="attr2-card">
-              <strong>
-                Def:
-                {` ${cardAttr2}` }
-              </strong>
-            </h4>
+          <div className="div-Card cadaAttr" data-testid="attr2-card">
+            <div className="attr-title"><strong>Defesa</strong></div>
+            <div className="attr-descrip">{ cardAttr2 }</div>
           </div>
-          <div className="div-Card destaque">
-            <h4 data-testid="attr3-card">
-              <strong>
-                HP:
-                {` ${cardAttr3}` }
-              </strong>
-            </h4>
+          <div className="div-Card cadaAttr" data-testid="attr3-card">
+            <div className="attr-title"><strong>Vitalidade:</strong></div>
+            <div className="attr-descrip">{ cardAttr3 }</div>
           </div>
         </div>
       </div>

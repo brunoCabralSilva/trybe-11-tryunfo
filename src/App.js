@@ -155,26 +155,16 @@ class App extends React.Component {
   }
 
   render() {
-    const {
-      cardName,
-      cardDescription: cardDescrip,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardRare,
-      cardImage,
-      cardTrunfo,
-      hasTrunfo,
-      filtro,
-      filtroCheck,
-    } = this.state;
+    const { cardName, cardDescription: cardDescrip, cardAttr1 } = this.state;
+    const { cardAttr2, cardAttr3, cardRare, cardImage } = this.state;
+    const { cardTrunfo, hasTrunfo, filtro, filtroCheck } = this.state;
     const lista = this.opcaoArray();
     return (
       <div className="principal">
-        <h1>Tryunfo</h1>
         <div className="cadastra-chaves">
           <div className="form-card">
             <div className="form-conteiner-Component">
+              <h1>Tryunfo</h1>
               <Form
                 cardName={ cardName }
                 cardDescription={ cardDescrip }
@@ -190,6 +180,8 @@ class App extends React.Component {
                 cardTrunfo={ cardTrunfo }
               />
             </div>
+          </div>
+          <div className="exib-card">
             <div className="card-conteiner-Component">
               <Card
                 cardName={ cardName }
@@ -205,6 +197,7 @@ class App extends React.Component {
           </div>
         </div>
         <div className="div-exibicao">
+          <h5>Pesquisar ou filtrar as cartas após adicioná-las:</h5>
           <input
             type="text"
             placeholder="Nome"
@@ -245,5 +238,4 @@ class App extends React.Component {
     );
   }
 }
-
 export default App;

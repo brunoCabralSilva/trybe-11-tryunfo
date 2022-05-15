@@ -4,59 +4,77 @@
 }
 
 body {
-  background-image: url('../images/fundo.png');
-  background-size: cover;
   color: black;
 }
 
 .principal {
   align-items: left;
+  background-color: black;
   display: flex;
   flex-direction: column;
-  margin: 20px;
 }
 
-input, textarea, select, .app-checkbox {
-  background-color: #f5d8c2;
+input, textarea, .app-checkbox {
+  border: none;
+  border-bottom: 1px solid black;
+  text-align: center;
+  width: 65%;
+}
+
+select {
   border: none;
   text-align: center;
   width: 65%;
 }
 
-.form-card {
-  align-items: left;
+.cadastra-chaves {
+  border-bottom: 1px solid black;
   display: flex;
   flex-direction: row;
-  justify-content: left;
+}
+
+.form-card {
+  align-items: left;
+  background-color: #263d49;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.exib-card {
+  align-items: left;
+  background-image: url('../images/dark-wood.jpg');
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
   width: 100%;
 }
 
 .form-conteiner-Component {
-  background-image: url('../images/pergaminho_fundo.jpeg');
-  background-size: content;
-  border: 30px solid transparent;
-  border-image: url('../images/pergaminho.png') 50 round;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 7px;
   color: black;
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  width: 50%;
+  margin: 20px;
+  padding: 20px 30px;
+  width: 60%;
 }
 
 .card-conteiner-Component {
-  background-image: url('../images/pergaminho_fundo.jpeg');
-  border: 30px solid transparent;
-  border-image: url('../images/pergaminho.png') 50 round;
+  background-color: #263d49;
+  border: 10px solid white;
+  border-radius: 7px;
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: 2px;
+  margin: 20px;
+  margin-left: 15px;
   text-align: center;
-  width: 50%;
-}
-
-.cadastra-chaves {
-  width: 100%;
+  width: 60%;
 }
 
 .form {
@@ -73,9 +91,8 @@ input, textarea, select, .app-checkbox {
 }
 
 h1 {
-  color: white;
-  margin: 10px 0;
-  padding-left: 20px;
+  color: black;
+  padding-bottom: 10px;
   text-align: left;
   width: 100%;
 }
@@ -94,29 +111,27 @@ h5 {
 }
 
 .btn-save-data-disabled {
-  background-color: #a1a1a5;
+  background-color: #d1d1d6;
   border: 1px solid white;
   color: black;
   font-size: 20px;
-  margin: 10px 0 0;
   padding: 5px 0;
   text-align: center;
   width: 100%;
 }
 
 .btn-save-data {
-  background-color: #886e5d;
+  background-color: #365869;
   border: 1px solid black;
-  color: black;
+  color: white;
   font-size: 20px;
-  margin: 30px 0 0;
-  padding: 10px 0;
+  padding: 5px 0;
   text-align: center;
   width: 100%;
 }
 
 .btn-save-data:hover {
-  background-color: #52443c;
+  background-color: #263d49;
   border: 1px solid black;
   color: white;
 }
@@ -124,7 +139,14 @@ h5 {
 .div-pai-div-Card {
   display: flex;
   flex-direction: column;
-  justify-content: left;
+  padding-bottom: 10px;
+}
+
+.attr {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 90%;
 }
 
 .div-Card {
@@ -133,52 +155,73 @@ h5 {
   width: 100%;
 }
 
+.div-Card strong, .div-Card h4 strong, .div-Card span {
+  color: white;
+}
+
+.card-name {
+  margin-top: 10px;
+  text-align: left;
+}
+
+.cadaAttr {
+  border: 2px solid white;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
+  padding: 0;
+}
+
+.attr-title {
+  background-color: #263d49;
+  padding: 5px 10px;
+  text-align: left;
+  width: 90%;
+}
+
+.attr-descrip {
+  background-color: white;
+  color: black;
+  padding: 5px 0;
+  text-align: center;
+  width: 10%;
+}
+
 h4 {
   color: black;
 }
 
 .descrip {
   color: black;
-  margin: 2px auto;
-  margin-bottom: 0;
+  margin: 10px auto;
   text-align: left;
-  width: 90%;
-}
-
-.destaque {
-  border: 10px solid transparent;
-  border-image: url('../images/pergaminho_fundo.jpeg') 50 round;
-  color: black;
-  margin: 2px auto;
-  padding: 6px 0 1px;
-  width: 90%;
 }
 
 .img-card {
-  border: 10px solid transparent;
-  border-image: url('../images/pergaminho_fundo.jpeg') 50 round;
   margin-top: 1px;
-  width: 90%;
-}
-
-.attr {
-  display: flex;
-  margin: auto;
   width: 90%;
 }
 
 .div-exibicao {
   align-items: center;
+  background-color: white;
+  color: black;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding: 0 20px;
-  width: 40%;
+  padding: 20px;
+  width: 100%;
 }
 
 .app-checkbox {
   align-items: center;
   display: flex;
+}
+
+.div-exibicao input, .div-exibicao select, .div-exibicao .app-checkbox {
+  margin: 10px;
+  width: 20%;
 }
 
 .app-checkbox span {
@@ -187,26 +230,28 @@ h4 {
 
 .div-cards {
   align-items: center;
-  background-image: url('../images/pergaminho_fundo.jpeg');
-  border: 30px solid transparent;
-  border-image: url('../images/pergaminho.png') 50 round;
+  background-color: #263d49;
+  border: 10px solid white;
+  border-radius: 7px;
+  color: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  padding-top: 2px;
+  justify-content: center;
+  margin: 20px;
+  margin-left: 15px;
   text-align: center;
   width: 30%;
 }
 
 .btn-delete {
-  background-color: #8d7568;
+  background-color: white;
   color: black;
   margin: 10px 0;
   width: 90%;
 }
 
 .btn-delete:hover {
-  background-color: #52443c;
+  background-color: #152229;
   color: white;
   margin: 10px 0;
   width: 90%;
