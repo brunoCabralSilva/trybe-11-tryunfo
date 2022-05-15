@@ -172,57 +172,59 @@ class App extends React.Component {
     return (
       <div className="principal">
         <h1>Tryunfo</h1>
-        <div className="form-card">
-          <div className="form-conteiner-Component">
-            <Form
-              cardName={ cardName }
-              cardDescription={ cardDescrip }
-              cardImage={ cardImage }
-              cardAttr1={ cardAttr1 }
-              cardAttr2={ cardAttr2 }
-              cardAttr3={ cardAttr3 }
-              cardRare={ cardRare }
-              onSaveButtonClick={ this.onSaveButtonClick }
-              isSaveButtonDisabled={ this.habilitaBotao() }
-              onInputChange={ this.onInputChange }
-              hasTrunfo={ hasTrunfo }
-              cardTrunfo={ cardTrunfo }
-            />
-          </div>
-          <div className="card-conteiner-Component">
-            <Card
-              cardName={ cardName }
-              cardDescription={ cardDescrip }
-              cardAttr1={ cardAttr1 }
-              cardAttr2={ cardAttr2 }
-              cardAttr3={ cardAttr3 }
-              cardImage={ cardImage }
-              cardRare={ cardRare }
-              cardTrunfo={ cardTrunfo }
-            />
+        <div className="cadastra-chaves">
+          <div className="form-card">
+            <div className="form-conteiner-Component">
+              <Form
+                cardName={ cardName }
+                cardDescription={ cardDescrip }
+                cardImage={ cardImage }
+                cardAttr1={ cardAttr1 }
+                cardAttr2={ cardAttr2 }
+                cardAttr3={ cardAttr3 }
+                cardRare={ cardRare }
+                onSaveButtonClick={ this.onSaveButtonClick }
+                isSaveButtonDisabled={ this.habilitaBotao() }
+                onInputChange={ this.onInputChange }
+                hasTrunfo={ hasTrunfo }
+                cardTrunfo={ cardTrunfo }
+              />
+            </div>
+            <div className="card-conteiner-Component">
+              <Card
+                cardName={ cardName }
+                cardDescription={ cardDescrip }
+                cardAttr1={ cardAttr1 }
+                cardAttr2={ cardAttr2 }
+                cardAttr3={ cardAttr3 }
+                cardImage={ cardImage }
+                cardRare={ cardRare }
+                cardTrunfo={ cardTrunfo }
+              />
+            </div>
           </div>
         </div>
         <div className="div-exibicao">
-          <div className="todos-os-filtros">
-            <input
-              type="text"
-              placeholder="Nome"
-              data-testid="name-filter"
-              onChange={ this.alteraFiltroNome }
-              disabled={ filtroCheck }
-            />
-            <select
-              onChange={ this.filtraPorRaridade }
-              value={ filtro }
-              disabled={ filtroCheck }
-              data-testid="rare-filter"
-              className="filtro-cartas"
-            >
-              <option value="todas" selected>todas</option>
-              <option value="normal">normal</option>
-              <option value="raro">raro</option>
-              <option value="muito raro">muito raro</option>
-            </select>
+          <input
+            type="text"
+            placeholder="Nome"
+            data-testid="name-filter"
+            onChange={ this.alteraFiltroNome }
+            disabled={ filtroCheck }
+          />
+          <select
+            onChange={ this.filtraPorRaridade }
+            value={ filtro }
+            disabled={ filtroCheck }
+            data-testid="rare-filter"
+            className="filtro-cartas"
+          >
+            <option value="todas" selected>todas</option>
+            <option value="normal">normal</option>
+            <option value="raro">raro</option>
+            <option value="muito raro">muito raro</option>
+          </select>
+          <div className="app-checkbox">
             <input
               type="checkbox"
               data-testid="trunfo-filter"
@@ -231,13 +233,13 @@ class App extends React.Component {
             />
             <span> Super Trunfo </span>
           </div>
-          <div className="todas-as-cartas">
-            <Lista
-              listaEscolhida={ lista }
-              filtro={ filtro }
-              apagaCarta={ this.apagaCarta }
-            />
-          </div>
+        </div>
+        <div className="todas-as-cartas">
+          <Lista
+            listaEscolhida={ lista }
+            filtro={ filtro }
+            apagaCarta={ this.apagaCarta }
+          />
         </div>
       </div>
     );

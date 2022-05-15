@@ -3,110 +3,222 @@
   padding: 0;
 }
 
+body {
+  background-image: url('../images/fundo.png');
+  background-size: cover;
+  color: black;
+}
+
+.principal {
+  align-items: left;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+input, textarea, select, .app-checkbox {
+  background-color: #f5d8c2;
+  border: none;
+  text-align: center;
+  width: 65%;
+}
+
 .form-card {
+  align-items: left;
   display: flex;
   flex-direction: row;
+  justify-content: left;
+  width: 100%;
 }
 
 .form-conteiner-Component {
-  background-color: gray;
-  margin: 40px;
+  background-image: url('../images/pergaminho_fundo.jpeg');
+  background-size: content;
+  border: 30px solid transparent;
+  border-image: url('../images/pergaminho.png') 50 round;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 50%;
 }
 
 .card-conteiner-Component {
-  align-items: center;
-  background-color: gray;
+  background-image: url('../images/pergaminho_fundo.jpeg');
+  border: 30px solid transparent;
+  border-image: url('../images/pergaminho.png') 50 round;
   display: flex;
-  flex-flow: wrap;
   flex-direction: column;
   justify-content: center;
-  margin: 40px;
+  padding-top: 2px;
   text-align: center;
-  width: 40%;
+  width: 50%;
+}
+
+.cadastra-chaves {
+  width: 100%;
 }
 
 .form {
-  margin: 40px;
+  display: flex;
+  flex-direction: column;
 }
 
-.form div {
+.form label div, .div-select-form {
   align-items: center;
   display: flex;
   flex-direction: row;
   justify-content: left;
+  padding: 5px 10px;
 }
 
 h1 {
-  margin: 40px 0 0 40px;
+  color: white;
+  margin: 10px 0;
+  padding-left: 20px;
+  text-align: left;
+  width: 100%;
 }
 
-h3 {
-  text-align: left;
+h5 {
+  width: 40%;
+}
+
+.checked-form {
+  width: 100%;
+}
+
+.checked-form h5 {
+  padding: 0 10px;
+  width: 100%;
+}
+
+.btn-save-data-disabled {
+  background-color: #a1a1a5;
+  border: 1px solid white;
+  color: black;
+  font-size: 20px;
+  margin: 10px 0 0;
+  padding: 5px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.btn-save-data {
+  background-color: #886e5d;
+  border: 1px solid black;
+  color: black;
+  font-size: 20px;
+  margin: 30px 0 0;
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.btn-save-data:hover {
+  background-color: #52443c;
+  border: 1px solid black;
+  color: white;
+}
+
+.div-pai-div-Card {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.div-Card {
+  padding: 10px 20px;
+  text-align: center;
+  width: 100%;
 }
 
 h4 {
-  padding: 5px 20px;
+  color: black;
 }
 
-.principal {
-  display: flex;
-  flex-direction: column;
-}
-
-textarea, input, select {
-  margin: 10px;
-  padding: 10px;
+.descrip {
+  color: black;
+  margin: 2px auto;
+  margin-bottom: 0;
   text-align: left;
+  width: 90%;
 }
 
-textarea {
-  width: 58.7%;
+.destaque {
+  border: 10px solid transparent;
+  border-image: url('../images/pergaminho_fundo.jpeg') 50 round;
+  color: black;
+  margin: 2px auto;
+  padding: 6px 0 1px;
+  width: 90%;
+}
+
+.img-card {
+  border: 10px solid transparent;
+  border-image: url('../images/pergaminho_fundo.jpeg') 50 round;
+  margin-top: 1px;
+  width: 90%;
 }
 
 .attr {
   display: flex;
+  margin: auto;
+  width: 90%;
 }
 
-select {
-  font-size: 18px;
-  height: 40px;
-  text-align: center;
-  width: 80%;
+.div-exibicao {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0 20px;
+  width: 40%;
+}
+
+.app-checkbox {
+  align-items: center;
+  display: flex;
+}
+
+.app-checkbox span {
+  width: 200px;
 }
 
 .div-cards {
   align-items: center;
-  background-color: gray;
+  background-image: url('../images/pergaminho_fundo.jpeg');
+  border: 30px solid transparent;
+  border-image: url('../images/pergaminho.png') 50 round;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin: 20px;
-  padding: 20px;
+  justify-content: space-around;
+  padding-top: 2px;
+  text-align: center;
+  width: 30%;
 }
 
-.div-cards h4 {
-  padding-bottom: 10px;
+.btn-delete {
+  background-color: #8d7568;
+  color: black;
+  margin: 10px 0;
+  width: 90%;
+}
+
+.btn-delete:hover {
+  background-color: #52443c;
+  color: white;
+  margin: 10px 0;
+  width: 90%;
+}
+
+.info-Name {
+  color: black;
+  margin: 10px 0;
+  width: 90%;
 }
 
 .todas-as-cartas {
   display: flex;
   flex-direction: row;
-  padding: 20px;
-}
-
-input {
-  width: 50%;
-}
-
-.div-exibicao {
-  display: flex;
-}
-
-.linkImage {
-  width: 80%;
-}
-
-.firstStatus, .secondStatus, .thirdStatus {
-  max-width: 80px;
-  min-width: 40px;
 }

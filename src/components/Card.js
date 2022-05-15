@@ -3,6 +3,14 @@ import '../App.css';
 import PropTypes from 'prop-types';
 
 class Card extends React.Component {
+  retornaSuperTrunfo = () => {
+    const { cardTrunfo } = this.props;
+    if (cardTrunfo === true) {
+      return (<span data-testid="trunfo-card">Super Trunfo  / </span>);
+    }
+    return ('Nível de raridade: ');
+  };
+
   render() {
     const {
       cardName,
@@ -12,47 +20,63 @@ class Card extends React.Component {
       cardAttr3,
       cardImage,
       cardRare,
-      cardTrunfo,
     } = this.props;
-    let valor = '';
-    if (cardTrunfo === true)valor = <h4 data-testid="trunfo-card">Super Trunfo</h4>;
-    else {
-      valor = <h4> </h4>;
-    }
 
     return (
-      <div>
-        <h4 data-testid="name-card">
-          Nome:
-          {` ${cardName}` }
-        </h4>
-        <img
-          data-testid="image-card"
-          src={ cardImage }
-          width="50%"
-          alt="Nome da carta"
-        />
-        <h4 data-testid="description-card">
-          Descrição:
-          {` ${cardDescription}` }
-        </h4>
-        <h4 data-testid="attr1-card">
-          Attr01:
-          {` ${cardAttr1}` }
-        </h4>
-        <h4 data-testid="attr2-card">
-          Attr02:
-          {` ${cardAttr2}` }
-        </h4>
-        <h4 data-testid="attr3-card">
-          Attr03:
-          {` ${cardAttr3}` }
-        </h4>
-        <h4 data-testid="rare-card">
-          Raridade:
-          {` ${cardRare}` }
-        </h4>
-        {valor}
+      <div className="div-pai-div-Card">
+        <div className="div-Card destaque">
+          <h4 data-testid="name-card">
+            <strong>
+              { cardName }
+            </strong>
+          </h4>
+        </div>
+        <div className="div-Card-image">
+          <img
+            data-testid="image-card"
+            className="img-card"
+            src={ cardImage }
+            alt="Nome da carta"
+          />
+        </div>
+        <div className="div-Card descrip">
+          <strong>
+            { this.retornaSuperTrunfo() }
+            <span data-testid="rare-card">
+              { cardRare }
+              {' - '}
+            </span>
+            <span data-testid="description-card">
+              { cardDescription }
+            </span>
+          </strong>
+        </div>
+        <div className="attr">
+          <div className="div-Card destaque">
+            <h4 data-testid="attr1-card">
+              <strong>
+                Atk:
+                {` ${cardAttr1}` }
+              </strong>
+            </h4>
+          </div>
+          <div className="div-Card destaque">
+            <h4 data-testid="attr2-card">
+              <strong>
+                Def:
+                {` ${cardAttr2}` }
+              </strong>
+            </h4>
+          </div>
+          <div className="div-Card destaque">
+            <h4 data-testid="attr3-card">
+              <strong>
+                HP:
+                {` ${cardAttr3}` }
+              </strong>
+            </h4>
+          </div>
+        </div>
       </div>
     );
   }

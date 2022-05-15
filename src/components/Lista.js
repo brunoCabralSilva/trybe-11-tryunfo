@@ -14,33 +14,35 @@ class Lista extends React.Component {
         const valor2 = (
           <div className="div-cards">
             <h4>
-              { card.nome }
+              <strong>{ card.nome }</strong>
             </h4>
-            <h4>
-              Descrição:
-              { card.descricao }
-            </h4>
-            <h4>
-              Atributo1:
-              { card.atributo1 }
-            </h4>
-            <h4>
-              Atributo2:
-              { card.atributo2 }
-            </h4>
-            <h4>
-              Atributo3:
-              { card.atributo3 }
-            </h4>
-            <h4>
-              Raridade:
+            <img src={ card.imagem } alt={ card.nome } className="img-card" />
+            <h6 className="info-Name descrip">
+              <strong>
+                { valorTrunfo }
+              </strong>
+              {' / '}
               { card.raridade }
-            </h4>
-            <h4>
-              { valorTrunfo }
-            </h4>
-            <img src={ card.imagem } alt={ card.nome } />
+              {' - '}
+              { card.descricao }
+            </h6>
+            <h6 className="info-Name descrip">
+              <strong>
+                Atk
+                {' - '}
+                { card.atributo1 }
+                {' / '}
+                Def
+                {' - '}
+                { card.atributo2 }
+                {' / '}
+                HP
+                {' - '}
+                { card.atributo3 }
+              </strong>
+            </h6>
             <button
+              className="btn-delete"
               id={ card.nome }
               type="button"
               onClick={ apagaCarta }

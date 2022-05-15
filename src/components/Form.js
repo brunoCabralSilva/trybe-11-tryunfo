@@ -11,11 +11,10 @@ class Form extends React.Component {
     } = this.props;
 
     if (hasTrunfo === true) {
-      return (<h4>Você já tem um Super Trunfo em seu baralho</h4>);
+      return (<h6>Você já tem um Super Trunfo em seu baralho</h6>);
     }
     return (
-      <div>
-        <h3>Super Trunfo</h3>
+      <div className="checked-form">
         <input
           name="cardTrunfo"
           id="super-trunfo"
@@ -24,9 +23,18 @@ class Form extends React.Component {
           onChange={ onInputChange }
           data-testid="trunfo-input"
         />
+        <h5>Super Trunfo</h5>
       </div>
     );
   };
+
+  avaliaDisabled = () => {
+    const { isSaveButtonDisabled } = this.props;
+    if (isSaveButtonDisabled === true) {
+      return ('btn-save-data-disabled');
+    }
+    return ('btn-save-data');
+  }
 
   render() {
     const {
@@ -46,7 +54,7 @@ class Form extends React.Component {
       <div className="form">
         <label htmlFor="name">
           <div>
-            <h3>Insira um nome para a carta: </h3>
+            <h5><strong>Nome: </strong></h5>
             <input
               id="name"
               name="cardName"
@@ -59,7 +67,7 @@ class Form extends React.Component {
         </label>
         <label htmlFor="description">
           <div>
-            <h3>Insira uma descrição: </h3>
+            <h5><strong>Descrição </strong></h5>
             <textarea
               id="description"
               name="cardDescription"
@@ -69,50 +77,48 @@ class Form extends React.Component {
             />
           </div>
         </label>
-        <div className="attr">
-          <label htmlFor="firstStatus">
-            <div>
-              <h3>Attr01 </h3>
-              <input
-                className="firstStatus"
-                name="cardAttr1"
-                value={ cardAttr1 }
-                onChange={ onInputChange }
-                type="number"
-                data-testid="attr1-input"
-              />
-            </div>
-          </label>
-          <label htmlFor="secondStatus">
-            <div>
-              <h3>Attr02 </h3>
-              <input
-                name="cardAttr2"
-                className="secondStatus"
-                value={ cardAttr2 }
-                onChange={ onInputChange }
-                type="number"
-                data-testid="attr2-input"
-              />
-            </div>
-          </label>
-          <label htmlFor="thirdStatus">
-            <div>
-              <h3>Attr03 </h3>
-              <input
-                className="thirdStatus"
-                name="cardAttr3"
-                value={ cardAttr3 }
-                onChange={ onInputChange }
-                type="number"
-                data-testid="attr3-input"
-              />
-            </div>
-          </label>
-        </div>
+        <label htmlFor="firstStatus">
+          <div>
+            <h5><strong>Ataque </strong></h5>
+            <input
+              className="firstStatus"
+              name="cardAttr1"
+              value={ cardAttr1 }
+              onChange={ onInputChange }
+              type="number"
+              data-testid="attr1-input"
+            />
+          </div>
+        </label>
+        <label htmlFor="secondStatus">
+          <div>
+            <h5><strong>Defesa </strong></h5>
+            <input
+              name="cardAttr2"
+              className="secondStatus"
+              value={ cardAttr2 }
+              onChange={ onInputChange }
+              type="number"
+              data-testid="attr2-input"
+            />
+          </div>
+        </label>
+        <label htmlFor="thirdStatus">
+          <div>
+            <h5><strong>HP </strong></h5>
+            <input
+              className="thirdStatus"
+              name="cardAttr3"
+              value={ cardAttr3 }
+              onChange={ onInputChange }
+              type="number"
+              data-testid="attr3-input"
+            />
+          </div>
+        </label>
         <label htmlFor="linkImage">
           <div>
-            <h3>Imagem:</h3>
+            <h5><strong>Imagem </strong></h5>
             <input
               className="linkImage"
               name="cardImage"
@@ -123,8 +129,8 @@ class Form extends React.Component {
             />
           </div>
         </label>
-        <div>
-          <h3>Raridade: </h3>
+        <div className="div-select-form">
+          <h5><strong>Raridade </strong></h5>
           <select
             name="cardRare"
             id="rare-rank"
@@ -145,6 +151,7 @@ class Form extends React.Component {
         <div>
           <button
             type="button"
+            className={ this.avaliaDisabled() }
             disabled={ isSaveButtonDisabled }
             onClick={ onSaveButtonClick }
             data-testid="save-button"
