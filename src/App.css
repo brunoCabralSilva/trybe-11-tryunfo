@@ -44,7 +44,6 @@ select {
 
 .exib-card {
   align-items: left;
-  background-image: url('../images/dark-wood.jpg');
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;

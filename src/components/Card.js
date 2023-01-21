@@ -49,7 +49,7 @@ class Card extends React.Component {
               {' - '}
             </span>
           </strong>
-          <span data-testid="description-card">
+          <span data-testid="description-card" className="break-all">
             { cardDescription }
           </span>
         </div>
